@@ -1,0 +1,52 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 55ac697642a18dd7d974736a3d06fd531aa82382 .travis.yml
+SHA1 0e53b80f1087cbba50dc1749db56b272ca33e1b0 Changes
+SHA1 7d85e6c9005a80a1e80886e6b06ec13f0336d428 LICENSE
+SHA1 f4506e578781763ab415c7cd73c53a4760a04bdf MANIFEST
+SHA1 332a483527aae09ddecdf81586cfde374db05050 META.json
+SHA1 5bc7bc73e73c0a8a6e2fb3b0c5340df36ba4fc3c META.yml
+SHA1 2c83741c226b25ec2c23a65c7caf97aba5c8ff7d Makefile.PL
+SHA1 9538b7b6f70f8eca61237707f843b1df3f92d4b6 README
+SHA1 6341cb253770f5430fe41f65bdc03b04d64d818f cpanfile
+SHA1 cc1934a98625cac1fdfb1ed59f1625c30ea76913 dist.ini
+SHA1 51b3a63496071107daead13ea1361ef434fe06c5 lib/MooseX/TraitFor/Meta/Class/BetterAnonClassNames.pm
+SHA1 c522c3928158e64bd97d34d20cbfe0b5305a7eb2 t/00-check-deps.t
+SHA1 8f224111ca5ce938f927bb732eca3d581101fd75 t/00-compile.t
+SHA1 78b01839cfa13f6e6d80394be0794c996aa33386 t/000-report-versions-tiny.t
+SHA1 cd9f9e0569d547f1bf9b4c40d4054d6c4f50b006 t/basic.t
+SHA1 3d5d656193d2051303a591b2344506fba9f44fde xt/author/pod-spell.t
+SHA1 a7948d34cfaad400286ea5d5fa6206c4c7e2552c xt/release/consistent-version.t
+SHA1 b3915eaac65e18e6a048b34a4b873beccab326b4 xt/release/eol.t
+SHA1 7999d955c4546271449da2a0b6193e843e32e96c xt/release/has-version.t
+SHA1 104381d7b1c74517a71cc275868d24077f1cf48e xt/release/minimum-version.t
+SHA1 7a82064d2bd575b895836c89318ccefc21ace814 xt/release/no-smart-comments.t
+SHA1 55c4970fcbda8278f6878cd6adb16fd32efa3bb6 xt/release/no-tabs.t
+SHA1 44a0f41edae7ab388d676484a1eb961e309a2060 xt/release/pod-coverage.t
+SHA1 30bbf96f53b007397f14bd4484a2794b0af36998 xt/release/pod-linkcheck.t
+SHA1 d3dd6bde56767bdfe4afb80fd13e17802f6dad50 xt/release/pod-syntax.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJTfkwpAAoJEOd5N1CvIgQkf7UH/jCsGlB+oQEFeYEuTnQvteWg
+Hx+BthdkCeGPLih6w0dNbDpOg2OrscXq8TbCJUlPPiaBTf9Xoj+aABwkE4cw7h8G
+/Gw23dSm/GYsz6TeKadqKvala4tGfvRhOJhtMQhqf3ZQvfUXxshJ7jsi9C/RVzzs
+iKTv9i537kXSR6lBzeBBHpRqaCdo9V6Vag4WAQoGvJgLsHDEj+IYziFxHs+UwA4C
+G4UuIsLAHPGNypOZlMjX1HRJ7cks20zh2dl7yyfhi9Az9AehpoDsQVNpkJA4Hpag
+O81Sq4Csg9k41yCpXrz6l35CRZI9/wzd9sG6llc6DosGCU8HMc7w3Oc82Of2yGk=
+=daRV
+-----END PGP SIGNATURE-----
