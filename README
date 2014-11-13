@@ -3,9 +3,44 @@ NAME
     *attempt* to demystify generated anonymous class names
 
 VERSION
-    This document describes version 0.002001 of
-    MooseX::TraitFor::Meta::Class::BetterAnonClassNames - released May 22,
-    2014 as part of MooseX-TraitFor-Meta-Class-BetterAnonClassNames.
+    This document describes version 0.002002 of
+    MooseX::TraitFor::Meta::Class::BetterAnonClassNames - released November
+    12, 2014 as part of MooseX-TraitFor-Meta-Class-BetterAnonClassNames.
+
+ATTRIBUTES
+  is_anon
+    Read-only, Boolean, default: false.
+
+    Provides an attribute in the place of "is_anon" in Class::MOP::Package.
+
+  anon_package_prefix
+    Read-only, String
+
+METHODS
+  _build_anon_package_prefix
+    Builder method for the "anon_package_prefix" attribute.
+
+  _anon_package_middle
+    Defines what the "middle" of our anonymous package names is; provided
+    for ease of overriding and hardcoded to:
+
+        ::__ANON__::SERIAL::
+
+  _anon_package_prefix
+    Returns the full prefix used to generate anonymous package names; if
+    called on an instance then returns a sensible prefix (generally class
+    name) stashed in "anon_package_prefix"; otherwise returns the result of
+    a call to "_anon_package_prefix" in Moose::Meta::Class.
+
+  create
+    Set the package name to a nicer anonymous class name if is_anon is
+    passed and true and anon_package_prefix is passed and a non-empty
+    string.
+
+  create_anon_class
+    Create an anonymous class, as via "create_anon_class" in
+    Moose::Meta::Class, but with a kinder, gentler package name -- if
+    possible.
 
 SUMMARY
     You really want to be looking at "with_traits" in MooseX::Util.
@@ -18,15 +53,15 @@ SEE ALSO
 
 SOURCE
     The development version is on github at
-    <http://https://github.com/RsrchBoy/moosex-traitfor-class-betteranonclas
-    snames> and may be cloned from
-    <git://https://github.com/RsrchBoy/moosex-traitfor-class-betteranonclass
-    names.git>
+    <http://https://github.com/RsrchBoy/moosex-traitfor-meta-class-betterano
+    nclassnames> and may be cloned from
+    <git://https://github.com/RsrchBoy/moosex-traitfor-meta-class-betteranon
+    classnames.git>
 
 BUGS
     Please report any bugs or feature requests on the bugtracker website
-    https://github.com/RsrchBoy/moosex-traitfor-class-betteranonclassnames/i
-    ssu es
+    https://github.com/RsrchBoy/moosex-traitfor-meta-class-betteranonclassna
+    mes /issues
 
     When submitting a bug or request, please include a test-file or a patch
     to an existing test-file that illustrates the bug or desired feature.
@@ -42,11 +77,12 @@ AUTHOR
 
     Flattr this
     <https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithu
-    b.com%2FRsrchBoy%2Fmoosex-traitfor-class-betteranonclassnames&title=Rsrc
-    hBoy's%20CPAN%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames&tags=%22
-    RsrchBoy's%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames%20in%20the%
-    20CPAN%22>, gittip me <https://www.gittip.com/RsrchBoy/>, or indulge my
-    Amazon Wishlist <http://bit.ly/rsrchboys-wishlist>... If you so desire.
+    b.com%2FRsrchBoy%2Fmoosex-traitfor-meta-class-betteranonclassnames&title
+    =RsrchBoy's%20CPAN%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames&tag
+    s=%22RsrchBoy's%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames%20in%2
+    0the%20CPAN%22>, gittip me <https://www.gittip.com/RsrchBoy/>, or
+    indulge my Amazon Wishlist <http://bit.ly/rsrchboys-wishlist>... If you
+    so desire.
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2014 by Chris Weyl.

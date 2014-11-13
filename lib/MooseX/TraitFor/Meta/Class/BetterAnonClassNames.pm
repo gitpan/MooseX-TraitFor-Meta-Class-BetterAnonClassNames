@@ -8,11 +8,9 @@
 #   The GNU Lesser General Public License, Version 2.1, February 1999
 #
 package MooseX::TraitFor::Meta::Class::BetterAnonClassNames;
-BEGIN {
-  $MooseX::TraitFor::Meta::Class::BetterAnonClassNames::AUTHORITY = 'cpan:RSRCHBOY';
-}
-# git description: 7888bc7
-$MooseX::TraitFor::Meta::Class::BetterAnonClassNames::VERSION = '0.002001';
+our $AUTHORITY = 'cpan:RSRCHBOY';
+# git description: 0.002001-6-gd0c33f9
+$MooseX::TraitFor::Meta::Class::BetterAnonClassNames::VERSION = '0.002002';
 
 # ABSTRACT: Metaclass trait to *attempt* to demystify generated anonymous class names
 
@@ -20,7 +18,9 @@ use Moose::Role;
 use namespace::autoclean;
 use autobox::Core;
 
+
 has is_anon => (is => 'ro', isa => 'Bool', default => 0);
+
 
 has anon_package_prefix => (
     is       => 'ro',
@@ -30,9 +30,10 @@ has anon_package_prefix => (
 
 sub _build_anon_package_prefix { Moose::Meta::Class->_anon_package_prefix }
 
+
 sub _anon_package_middle { '::__ANON__::SERIAL::' }
 
-# XXX around?
+
 sub _anon_package_prefix {
     my $thing = shift @_;
 
@@ -46,6 +47,7 @@ sub _anon_package_prefix {
     ### $prefix
     return $prefix;
 }
+
 
 around create => sub {
     my ($orig, $self) = (shift, shift);
@@ -66,6 +68,7 @@ around create => sub {
     ### %opts
     return $self->$orig(%opts);
 };
+
 
 around create_anon_class => sub {
     my ($orig, $class) = (shift, shift);
@@ -125,7 +128,50 @@ MooseX::TraitFor::Meta::Class::BetterAnonClassNames - Metaclass trait to *attemp
 
 =head1 VERSION
 
-This document describes version 0.002001 of MooseX::TraitFor::Meta::Class::BetterAnonClassNames - released May 22, 2014 as part of MooseX-TraitFor-Meta-Class-BetterAnonClassNames.
+This document describes version 0.002002 of MooseX::TraitFor::Meta::Class::BetterAnonClassNames - released November 12, 2014 as part of MooseX-TraitFor-Meta-Class-BetterAnonClassNames.
+
+=head1 ATTRIBUTES
+
+=head2 is_anon
+
+Read-only, L<Boolean|Moose::Util::TypeConstraints/Default Type Constraints>,
+default: false.
+
+Provides an attribute in the place of L<Class::MOP::Package/is_anon>.
+
+=head2 anon_package_prefix
+
+Read-only, L<String|Moose::Util::TypeConstraints/Default Type Constraints>
+
+=head1 METHODS
+
+=head2 _build_anon_package_prefix
+
+Builder method for the L</anon_package_prefix> attribute.
+
+=head2 _anon_package_middle
+
+Defines what the "middle" of our anonymous package names is; provided for ease
+of overriding and hardcoded to:
+
+    ::__ANON__::SERIAL::
+
+=head2 _anon_package_prefix
+
+Returns the full prefix used to generate anonymous package names; if called
+on an instance then returns a sensible prefix (generally class name)
+stashed in L</anon_package_prefix>; otherwise returns the result of a call
+to L<Moose::Meta::Class/_anon_package_prefix>.
+
+=head2 create
+
+Set the package name to a nicer anonymous class name if is_anon is passed
+and true and anon_package_prefix is passed and a non-empty string.
+
+=head2 create_anon_class
+
+Create an anonymous class, as via L<Moose::Meta::Class/create_anon_class>,
+but with a kinder, gentler package name -- if possible.
 
 =head1 SUMMARY
 
@@ -145,14 +191,14 @@ L<MooseX::Util>
 
 =head1 SOURCE
 
-The development version is on github at L<http://https://github.com/RsrchBoy/moosex-traitfor-class-betteranonclassnames>
-and may be cloned from L<git://https://github.com/RsrchBoy/moosex-traitfor-class-betteranonclassnames.git>
+The development version is on github at L<http://https://github.com/RsrchBoy/moosex-traitfor-meta-class-betteranonclassnames>
+and may be cloned from L<git://https://github.com/RsrchBoy/moosex-traitfor-meta-class-betteranonclassnames.git>
 
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-https://github.com/RsrchBoy/moosex-traitfor-class-betteranonclassnames/issu
-es
+https://github.com/RsrchBoy/moosex-traitfor-meta-class-betteranonclassnames
+/issues
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -168,7 +214,7 @@ Chris Weyl <cweyl@alumni.drew.edu>
 
 <a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
 <a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
-<a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Fmoosex-traitfor-class-betteranonclassnames&title=RsrchBoy's%20CPAN%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames&tags=%22RsrchBoy's%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
+<a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Fmoosex-traitfor-meta-class-betteranonclassnames&title=RsrchBoy's%20CPAN%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames&tags=%22RsrchBoy's%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
 
 =end html
 
@@ -177,7 +223,7 @@ rather B<it is simply a very pleasant surprise>. I largely create and release
 works like this because I need them or I find it enjoyable; however, don't let
 that stop you if you feel like it ;)
 
-L<Flattr this|https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Fmoosex-traitfor-class-betteranonclassnames&title=RsrchBoy's%20CPAN%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames&tags=%22RsrchBoy's%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames%20in%20the%20CPAN%22>,
+L<Flattr this|https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Fmoosex-traitfor-meta-class-betteranonclassnames&title=RsrchBoy's%20CPAN%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames&tags=%22RsrchBoy's%20MooseX-TraitFor-Meta-Class-BetterAnonClassNames%20in%20the%20CPAN%22>,
 L<gittip me|https://www.gittip.com/RsrchBoy/>, or indulge my
 L<Amazon Wishlist|http://bit.ly/rsrchboys-wishlist>...  If you so desire.
 
